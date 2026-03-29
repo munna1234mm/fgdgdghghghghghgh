@@ -120,3 +120,12 @@ app.get('/api/gen', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
+
+// Custom 404 Handler (to help debug)
+app.use((req, res) => {
+    res.status(404).json({
+        error: "Route not found",
+        path: req.path,
+        message: "Please use /BIN_NUMBER (e.g. /3743551272)"
+    });
+});
